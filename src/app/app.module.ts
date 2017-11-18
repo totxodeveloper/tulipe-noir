@@ -22,6 +22,8 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NotificationComponent } from "./components/notification/notification.component";
 
+// Pipes
+import {KeysPipe} from "./pipes/keys.pipe";
 
 // Services
 import { RouteGuard } from "./components/auth/route-guard";
@@ -29,7 +31,10 @@ import { ListadoPerrosComponent } from './components/panel/listado-perros/listad
 import { NotificationService } from "./services/notification.service";
 import { UserService } from "./services/user.service";
 import { OwnFireService } from "./services/own-fire.service";
-import {SignUpComponent} from "./components/auth/sign-up/sign-up.component";
+import { SignUpComponent } from "./components/auth/sign-up/sign-up.component";
+import { PerrosService } from "./services/perros.service";
+import { HttpModule } from "@angular/http";
+
 
 @NgModule({
   declarations: [
@@ -47,19 +52,22 @@ import {SignUpComponent} from "./components/auth/sign-up/sign-up.component";
     LoginComponent,
     ListadoPerrosComponent,
     NotificationComponent,
-    SignUpComponent
+    SignUpComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     RouteGuard,
     NotificationService,
     UserService,
-    OwnFireService
+    OwnFireService,
+    PerrosService
   ],
   bootstrap: [AppComponent]
 })

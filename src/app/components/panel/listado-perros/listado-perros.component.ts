@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PerrosService } from "../../../services/perros.service";
 
 @Component({
   selector: 'app-listado-perros',
@@ -7,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoPerrosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _perrosSrv: PerrosService ) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

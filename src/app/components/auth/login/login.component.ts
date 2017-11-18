@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(userData => {
-          console.log(userData)
+        if (userData.emailVerified) {
           return this.ownFireService.getUserFromDatabase(userData.uid);
+        } else {
+          const message = 'Your email is not yet verified';
+          this.notifier.display('error', message);
+          firebase.auth().signOut();
+        }
 
       })
       .then(userDataFromDatabase => {

@@ -2,6 +2,7 @@ import { EventEmitter } from "@angular/core";
 import * as firebase from 'firebase';
 
 export class UserService {
+
   statusChange: any = new EventEmitter<any>();
 
   constructor() { }

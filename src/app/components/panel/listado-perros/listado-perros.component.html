@@ -1,3 +1,57 @@
-<p>
-  listado-perros works!
-</p>
+<div class="container">
+  <h1>Perros</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <!--[routerLink]="['/luchador', 'nuevo']"-->
+      <button
+        class="btn btn-primary"
+        type="button" name="button"
+      >
+        Nuevo
+      </button>
+    </div>
+  </div>
+
+
+  <div class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-inverse">
+          <th></th>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Descripcion</th>
+          <th class="text-right">Opciones</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let perro of _perrosSrv.perros">
+            <td *ngIf="perro !== null"><img src="{{perro.imagenUrl}}" style="max-height: 150px; max-width: 150px;"></td>
+            <td *ngIf="perro !== null">{{perro.nombre}}</td>
+            <td *ngIf="perro !== null">{{perro.especie}}</td>
+            <td *ngIf="perro !== null">{{perro.descripcion}}</td>
+            <td *ngIf="perro !== null" class="text-right w120">
+              <!--[routerLink]="['/luchador', key]"-->
+              <button type="button" class="btn btn-success">
+                Editar
+              </button>
+              <!--(click)="borrarLuchador(key)"-->
+              <button type="button" class="btn btn-warning">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="_perrosSrv.perros.length == 0 && !loading" class="alert alert-info" role="alert">
+          <strong>No hay registros que mostrar</strong>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
