@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    console.log(email, password)
-
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(userData => {
         if (userData.emailVerified) {

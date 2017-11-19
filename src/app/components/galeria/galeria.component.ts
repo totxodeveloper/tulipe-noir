@@ -9,7 +9,6 @@ export class GaleriaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

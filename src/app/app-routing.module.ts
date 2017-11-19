@@ -13,12 +13,12 @@ import { ContactoComponent } from "./components/contacto/contacto.component";
 import { NosotrosComponent} from "./components/nosotros/nosotros.component";
 import { LoginComponent } from "./components/auth/login/login.component";
 import { ListadoPerrosComponent } from "./components/panel/listado-perros/listado-perros.component";
+import { FormPerroComponent } from "./components/panel/form-perro/form-perro.component";
+import { UploadImagenesComponent } from "./components/panel/upload-imagenes/upload-imagenes.component";
+
 
 // Services
 import { RouteGuard } from "./components/auth/route-guard";
-import {SignUpComponent} from "./components/auth/sign-up/sign-up.component";
-
-
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/portada', pathMatch: 'full'},
@@ -31,8 +31,10 @@ const appRoutes: Routes = [
   { path: 'sponsors', component: SponsorsComponent },
   { path: 'galeria', component: GaleriaComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'jorge-admin', component: LoginComponent },
+  { path: 'panel-admin', component: LoginComponent },
   { path: 'panel', component: ListadoPerrosComponent, canActivate: [RouteGuard] },
+  { path: 'perro/:id', component: FormPerroComponent, canActivate: [RouteGuard] },
+  { path: 'upload-imagenes', component: UploadImagenesComponent, canActivate: [RouteGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'portada' }
 ];
 

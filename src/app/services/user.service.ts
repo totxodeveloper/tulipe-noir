@@ -12,31 +12,17 @@ export class UserService {
     localStorage.setItem('user', JSON.stringify(userFromDatabase));
 
     const messaging = firebase.messaging();
-
-    messaging.requestPermission()
-      .then(() => {
-
-        firebase.messaging().getToken()
-          .then(token => {
-            console.log('Token received: ', token);
-
-            messaging.onMessage(payload => {
-              console.log(payload);
-              // TODO: display in toaster
-            });
-
-            const updates = {};
-            updates['/users/' + userFromDatabase.uid + "/messageToken"] = token;
-            return firebase.database().ref().update(updates);
-          })
-          .catch(err => {
-            console.log(err);
-          })
-
+    firebase.auth().currentUser.getIdToken()
+      .then(token => {
+        localStorage.setItem('token', token);
+        const updates = {};
+        updates['/users/' + userFromDatabase.uid + "/messageToken"] = token;
+        return firebase.database().ref().update(updates);
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(function(error) {
+        console.log('error', error);
+    });
+
 
 
     this.statusChange.emit(userFromDatabase);
@@ -49,6 +35,7 @@ export class UserService {
 
   destroy() {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     this.statusChange.emit(null);
   }
 }

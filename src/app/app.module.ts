@@ -22,9 +22,6 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NotificationComponent } from "./components/notification/notification.component";
 
-// Pipes
-import {KeysPipe} from "./pipes/keys.pipe";
-
 // Services
 import { RouteGuard } from "./components/auth/route-guard";
 import { ListadoPerrosComponent } from './components/panel/listado-perros/listado-perros.component';
@@ -34,6 +31,9 @@ import { OwnFireService } from "./services/own-fire.service";
 import { SignUpComponent } from "./components/auth/sign-up/sign-up.component";
 import { PerrosService } from "./services/perros.service";
 import { HttpModule } from "@angular/http";
+import { FormPerroComponent } from './components/panel/form-perro/form-perro.component';
+import { UploadImagenesComponent } from './components/panel/upload-imagenes/upload-imagenes.component';
+import { UploadImagesService } from "./services/upload-images.service";
 
 
 @NgModule({
@@ -53,7 +53,8 @@ import { HttpModule } from "@angular/http";
     ListadoPerrosComponent,
     NotificationComponent,
     SignUpComponent,
-    KeysPipe
+    FormPerroComponent,
+    UploadImagenesComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,8 @@ import { HttpModule } from "@angular/http";
     NotificationService,
     UserService,
     OwnFireService,
-    PerrosService
+    PerrosService,
+    UploadImagesService
   ],
   bootstrap: [AppComponent]
 })

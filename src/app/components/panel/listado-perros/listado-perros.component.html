@@ -4,15 +4,17 @@
 
   <div class="row">
     <div class="col-md-12 text-right">
-      <!--[routerLink]="['/luchador', 'nuevo']"-->
       <button
-        class="btn btn-primary"
+      [routerLink]="['/perro', 'nuevo']"
+      class="btn btn-outline-success"
         type="button" name="button"
       >
-        Nuevo
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </button>
     </div>
   </div>
+
+  <br>
 
 
   <div class="row animated fadeIn fast">
@@ -33,13 +35,12 @@
             <td *ngIf="perro !== null">{{perro.especie}}</td>
             <td *ngIf="perro !== null">{{perro.descripcion}}</td>
             <td *ngIf="perro !== null" class="text-right w120">
-              <!--[routerLink]="['/luchador', key]"-->
-              <button type="button" class="btn btn-success">
-                Editar
+              <button type="button" [routerLink]="['/perro', perro.id]" class="btn btn-outline-primary">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </button>
               <!--(click)="borrarLuchador(key)"-->
-              <button type="button" class="btn btn-warning">
-                Eliminar
+              <button type="button" class="btn btn-outline-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </td>
           </tr>

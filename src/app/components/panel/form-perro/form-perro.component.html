@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Agregar / Editar</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button [routerLink]="['/panel']" class="btn btn-outline-warning">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <br>
+
+  <div class="row animated fadeIn fast">
+    <div class="col-md-8 offset-2">
+
+      <form (ngSubmit)="save()" #form="ngForm">
+
+        <div class="form-group">
+
+          <input type="file" accept="image/*" (change)="changeListener($event)">
+
+        </div>
+        <div>
+
+          <img src="{{src}}" height="200" alt="Vista previa...">
+
+
+        </div>
+
+        <hr>
+
+        <div class="form-goup">
+          <label>Nombre</label>
+          <input
+          [(ngModel)]="perro.nombre"
+          type="text"
+          name="nombre"
+          class="form-control"
+          placeholder="Nombre"
+          required>
+        </div>
+
+
+  <br>
+
+  <div class="form-goup">
+  <button  [disabled]="!form.valid" type="submit" class="btn btn-info">
+  Guardar Cambios
+  </button>
+  </div>
+
+  </form>
+
+  </div>
+  </div>
+</div>
