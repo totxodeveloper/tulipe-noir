@@ -29,17 +29,16 @@
           <th class="text-right">Opciones</th>
           </thead>
           <tbody>
-          <tr *ngFor="let perro of _perrosSrv.perros">
-            <td *ngIf="perro !== null"><img src="{{perro.imagenUrl}}" style="max-height: 150px; max-width: 150px;"></td>
-            <td *ngIf="perro !== null">{{perro.nombre}}</td>
-            <td *ngIf="perro !== null">{{perro.especie}}</td>
-            <td *ngIf="perro !== null">{{perro.descripcion}}</td>
-            <td *ngIf="perro !== null" class="text-right w120">
-              <button type="button" [routerLink]="['/perro', perro.id]" class="btn btn-outline-primary">
+          <tr *ngFor="let key of perros | keys; let i = index">
+            <td><img src="{{perros[key].imagen}}" style="max-height: 150px; max-width: 150px;"></td>
+            <td>{{perros[key].nombre}}</td>
+            <td>{{perros[key].especie}}</td>
+            <td>{{perros[key].descripcion}}</td>
+            <td class="text-right w120">
+              <button type="button" [routerLink]="['/perro', key]" class="btn btn-outline-primary">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </button>
-              <!--(click)="borrarLuchador(key)"-->
-              <button type="button" class="btn btn-outline-danger">
+              <button (click)="deletePerro(key)" type="button" class="btn btn-outline-danger">
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </td>
@@ -47,7 +46,7 @@
           </tbody>
         </table>
 
-        <div *ngIf="_perrosSrv.perros.length == 0 && !loading" class="alert alert-info" role="alert">
+        <div *ngIf="(perros | keys).length == 0" class="alert alert-info" role="alert">
           <strong>No hay registros que mostrar</strong>
         </div>
 

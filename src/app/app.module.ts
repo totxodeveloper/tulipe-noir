@@ -35,6 +35,9 @@ import { FormPerroComponent } from './components/panel/form-perro/form-perro.com
 import { UploadImagenesComponent } from './components/panel/upload-imagenes/upload-imagenes.component';
 import { UploadImagesService } from "./services/upload-images.service";
 
+// Pipe
+import { KeysPipe } from "./pipes/keys.pipe";
+
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import { UploadImagesService } from "./services/upload-images.service";
     NotificationComponent,
     SignUpComponent,
     FormPerroComponent,
-    UploadImagenesComponent
+    UploadImagenesComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class FormPerroComponent implements OnInit {
 
   id: string;
-  src: any;
-  perro: PerroModel = new PerroModel(0, '', '', '', '');
-  fileToUpload: FileUploadModel;
+  src: string;
+
+  perro: PerroModel = {
+    nombre: '',
+    especie: '',
+    descripcion: '',
+    imagen: ''
+  };
 
   constructor(
     private _perrosSrv: PerrosService,
@@ -26,10 +31,7 @@ export class FormPerroComponent implements OnInit {
         this.id = parametros['id'];
         if (this.id !== 'nuevo') {
           this._perrosSrv.getOnePerro(this.id)
-            .subscribe( data => {
-              this.perro = data;
-              this.src = this.perro.imagenUrl;
-            })
+            .subscribe( data => this.perro = data)
         }
       }
     )
@@ -37,22 +39,26 @@ export class FormPerroComponent implements OnInit {
 
   save() {
 
+    if (this.src) {
+      this.perro.imagen = this.src;
+    }
+
     if ( this.id === 'nuevo') {
       //  add
-      console.log('add new dog')
-      this._perrosSrv.addPerro( this.perro, this.src )
+      console.log('add new dog');
+      this._perrosSrv.addPerro( this.perro )
         .subscribe( data => {
             console.log(data);
           },
           error => console.error(error));
 
     } else {
-      //  Update
-      // this._perrosSrv.updatePerro( this._perrosSrv.perros[this.id], this.perro, this.src )
-      //   .subscribe( data => {
-      //       console.log(data);
-      //     },
-      //     error => console.error(error));
+       // Update
+      this._perrosSrv.updatePerro( this.perro, this.id )
+        .subscribe( data => {
+            console.log(data);
+          },
+          error => console.error(error));
     }
     this.router.navigate(['/panel']);
 

@@ -23,7 +23,8 @@
         </div>
         <div>
 
-          <img src="{{src}}" height="200" alt="Vista previa...">
+          <img *ngIf="perro.imagen" src="{{perro.imagen}}" height="200" alt="Vista previa...">
+          <img *ngIf="src" src="{{src}}" height="200" alt="Vista previa...">
 
 
         </div>
@@ -39,6 +40,28 @@
           class="form-control"
           placeholder="Nombre"
           required>
+        </div>
+
+        <div class="form-goup">
+          <label>Tipo</label>
+          <input
+            [(ngModel)]="perro.especie"
+            type="text"
+            name="especie"
+            class="form-control"
+            placeholder="Tipo"
+            required>
+        </div>
+
+        <div class="form-goup">
+          <label>Descripcion</label>
+          <input
+            [(ngModel)]="perro.descripcion"
+            type="text"
+            name="descripcion"
+            class="form-control"
+            placeholder="Descripcion"
+            required>
         </div>
 
 
