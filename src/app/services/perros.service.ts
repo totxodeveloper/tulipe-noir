@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from "@angular/http";
 
-// import 'rxjs/Rx'
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
+import 'rxjs/Rx'
 
 import { PerroModel } from "../models/perro.model";
-import { FileUploadModel } from "../models/fileUpload.model";
-import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class PerrosService {
@@ -32,6 +28,9 @@ export class PerrosService {
       .map(response => {
         return response.json()
       })
+      .map((perros: Object[]) => {
+        return perros.map(item => PerroModel.fromJson(item));
+      })
       .subscribe(
         (result: PerroModel[]) => {
 
@@ -52,34 +51,34 @@ export class PerrosService {
 
   }
 
-  // public addPerro(perro: PerroModel, file: FileUploadModel) {
-  //
-  //   const observable = this.postNewPerro(perro, file);
-  //
-  //   observable.subscribe(
-  //     (beneficio: PerroModel) => {
-  //       this.perros = [...this.perros, beneficio];
-  //     },
-  //     error => console.log('Error trying to post a new perro')
-  //   );
-  //
-  //   return observable;
-  // }
+  public addPerro(perro: PerroModel, imagenUrl: any) {
 
-  // private postNewPerro(perro: PerroModel, file: FileUploadModel): Observable<PerroModel> {
-  //
-  //   const filename = new Date().getTime();
-  //
-  //   this.objToPost.benefit = beneficio;
-  //   this.objToPost.base64File = file.file;
-  //   this.objToPost.fileName = filename;
-  //
-  //   const observable = this.http.post(this.urlApi, this.objToPost)
-  //     .map(response => response.json())
-  //     .map(beneficio => BeneficioModel.fromJson(beneficio))
-  //     .share();
-  //
-  //   return observable;
-  // }
+    debugger
+    const observable = this.postNewPerro(perro, imagenUrl);
 
+    observable.subscribe(
+      (beneficio: PerroModel) => {
+        this.perros = [...this.perros, beneficio];
+      },
+      error => console.log('Error trying to post a new perro')
+    );
+
+    return observable;
+  }
+
+  private postNewPerro(perro: PerroModel, imagenUrl: any): Observable<PerroModel> {
+
+    perro.imagenUrl = imagenUrl;
+
+    const observable = this.http.post(`${this.apiURL}.json?auth=${this.token}`, perro)
+      .map(response => response.json())
+      .map(perro => PerroModel.fromJson(perro))
+      .share();
+
+    return observable;
+  }
+
+  public updatePerro() {
+
+  }
 }

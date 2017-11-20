@@ -37,17 +37,18 @@ export class FormPerroComponent implements OnInit {
 
   save() {
 
-    if ( this.id === 'new') {
+    if ( this.id === 'nuevo') {
       //  add
-      // this._perrosSrv.addPerro( this.perro, this.fileToUpload )
-      //   .subscribe( data => {
-      //       console.log(data);
-      //     },
-      //     error => console.error(error));
+      console.log('add new dog')
+      this._perrosSrv.addPerro( this.perro, this.src )
+        .subscribe( data => {
+            console.log(data);
+          },
+          error => console.error(error));
 
     } else {
       //  Update
-      // this._perrosSrv.updatePerro( this._perrosSrv.perros[this.id], this.perro, this.fileToUpload )
+      // this._perrosSrv.updatePerro( this._perrosSrv.perros[this.id], this.perro, this.src )
       //   .subscribe( data => {
       //       console.log(data);
       //     },
