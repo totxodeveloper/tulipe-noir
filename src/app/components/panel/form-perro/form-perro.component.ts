@@ -45,10 +45,8 @@ export class FormPerroComponent implements OnInit {
 
     if ( this.id === 'nuevo') {
       //  add
-      console.log('add new dog');
       this._perrosSrv.addPerro( this.perro )
         .subscribe( data => {
-            console.log(data);
             this.router.navigate(['/panel']);
           },
           error => console.error(error));
@@ -57,7 +55,6 @@ export class FormPerroComponent implements OnInit {
        // Update
       this._perrosSrv.updatePerro( this.perro, this.id )
         .subscribe( data => {
-            console.log(data);
             this.router.navigate(['/panel']);
           },
           error => console.error(error));
@@ -81,8 +78,6 @@ export class FormPerroComponent implements OnInit {
       this.src = myReader.result;
       // this.fileToUpload.nombreArchivo = file.name;
       // this.fileToUpload.archivo = myReader.result.split(',')[1];
-
-      console.log(file);
     };
     myReader.readAsDataURL(file);
   }

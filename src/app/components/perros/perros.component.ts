@@ -8,13 +8,15 @@ import {PerrosService} from "../../services/perros.service";
 })
 export class PerrosComponent implements OnInit {
 
-  perros: any[] = []
+  perros: any[] = [];
+  loading: boolean = true;
 
   constructor(
     private perrosSrv: PerrosService
   ) {
     this.perrosSrv.getPerros()
       .subscribe( perros => {
+        this.loading = false;
         for (const id$ in perros) {
           const p = perros[id$];
           p.id$ = id$;
@@ -22,7 +24,6 @@ export class PerrosComponent implements OnInit {
         }
       })
 
-    console.log(this.perros);
   }
 
   ngOnInit() {

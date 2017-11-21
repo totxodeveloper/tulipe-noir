@@ -23,7 +23,6 @@ export class SignUpComponent implements OnInit {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(userData => {
-        console.log(userData);
         userData.sendEmailVerification();
 
         const message = `Hemos enviado un mail de verifiacion a ${email}. Por favor revise su casilla de correo

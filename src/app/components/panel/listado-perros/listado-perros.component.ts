@@ -10,13 +10,14 @@ import {PerroModel} from "../../../models/perro.model";
 export class ListadoPerrosComponent implements OnInit {
 
   perros: PerroModel[] = [];
+  loading: boolean = true;
 
   constructor(private _perrosSrv: PerrosService ) {}
 
   ngOnInit() {
     this._perrosSrv.getPerros()
       .subscribe(data => {
-        console.log(data);
+        this.loading = false;
         this.perros = data
       })
   }

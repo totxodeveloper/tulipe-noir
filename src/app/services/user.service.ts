@@ -20,7 +20,6 @@ export class UserService {
         return firebase.database().ref().update(updates);
       })
       .catch(function(error) {
-        console.log('error', error);
     });
 
 

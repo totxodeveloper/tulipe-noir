@@ -32,7 +32,6 @@ export class UploadImagenesComponent implements OnInit {
         })
         .catch(err => {
           this.notifier.display('error', err.message);
-          console.log(err);
         });
     }
   }
