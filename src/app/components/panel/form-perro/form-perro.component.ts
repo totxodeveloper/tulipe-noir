@@ -49,6 +49,7 @@ export class FormPerroComponent implements OnInit {
       this._perrosSrv.addPerro( this.perro )
         .subscribe( data => {
             console.log(data);
+            this.router.navigate(['/panel']);
           },
           error => console.error(error));
 
@@ -57,10 +58,11 @@ export class FormPerroComponent implements OnInit {
       this._perrosSrv.updatePerro( this.perro, this.id )
         .subscribe( data => {
             console.log(data);
+            this.router.navigate(['/panel']);
           },
           error => console.error(error));
     }
-    this.router.navigate(['/panel']);
+
 
   }
 

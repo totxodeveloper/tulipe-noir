@@ -11,16 +11,15 @@ export class ListadoPerrosComponent implements OnInit {
 
   perros: PerroModel[] = [];
 
-  constructor(private _perrosSrv: PerrosService ) {
+  constructor(private _perrosSrv: PerrosService ) {}
 
+  ngOnInit() {
     this._perrosSrv.getPerros()
       .subscribe(data => {
         console.log(data);
         this.perros = data
       })
   }
-
-  ngOnInit() {}
 
   deletePerro(key$: string) {
     this._perrosSrv.deletePerro(key$)
@@ -29,12 +28,6 @@ export class ListadoPerrosComponent implements OnInit {
           console.error(response);
         } else {
           delete this.perros[key$];
-          // const index = this.perros.indexOf(this.perros[key$]);
-          // this.perros = [
-          //   ...this.perros.slice(0, index),
-          //   ...this.perros.slice(index + 1)
-          //
-          // ]
         }
       })
   }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-faded navbar-toggleable-md" style="background-color: #e3f2fd;">
+<nav class="navbar fixed-top navbar-light bg-faded navbar-toggleable-md" style="background-color: #f5f5f5;">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,12 +26,6 @@
       </li>
       <li *ngIf="!isLoggedIn" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/sponsors">Sponsors</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/galeria">Galeria</a>
-      </li>
-      <li *ngIf="isLoggedIn" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/upload-imagenes">Subir Imagenes</a>
       </li>
       <li *ngIf="isLoggedIn" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/panel">Panel de Administracion</a>

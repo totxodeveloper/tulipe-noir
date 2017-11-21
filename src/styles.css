@@ -1,3 +1,8 @@
+html body {
+  background-color: rgba(0, 0, 0, 0.91);
+  color: #f7f7f7;
+}
+
 .main-container{
   margin-top: 40px;
   margin-bottom: 150px;
@@ -38,4 +43,14 @@
 
 .fadeIn {
   animation-name: fadeIn;
+}
+
+.container-page {
+  margin-top: 120px;
+}
+
+.title-container-page {
+  font-family: Roboto;
+  font-size: 4em;
+  margin-bottom: 40px;
 }

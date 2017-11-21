@@ -55,13 +55,15 @@
 
         <div class="form-goup">
           <label>Descripcion</label>
-          <input
+          <textarea
             [(ngModel)]="perro.descripcion"
             type="text"
             name="descripcion"
             class="form-control"
             placeholder="Descripcion"
+            maxlength="400"
             required>
+          </textarea>
         </div>
 
 

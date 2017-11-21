@@ -29,12 +29,10 @@ const appRoutes: Routes = [
   { path: 'historia', component: HistoriaComponent },
   { path: 'raza', component: RazaComponent },
   { path: 'sponsors', component: SponsorsComponent },
-  { path: 'galeria', component: GaleriaComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'panel-admin', component: LoginComponent },
   { path: 'panel', component: ListadoPerrosComponent, canActivate: [RouteGuard] },
   { path: 'perro/:id', component: FormPerroComponent, canActivate: [RouteGuard] },
-  { path: 'upload-imagenes', component: UploadImagenesComponent, canActivate: [RouteGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'portada' }
 ];
 

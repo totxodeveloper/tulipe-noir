@@ -1,3 +1,20 @@
-<p>
-  perros works!
-</p>
+<div class="container container-page">
+
+  <div class="col-lg-8 offset-2 text-center">
+    <h1 class="title-container-page"> Nuestros Perros </h1>
+
+    <div class="row perro-card" *ngFor="let perro of perros">
+      <div class="col-6">
+        <img class="img-fluid img-thumbnail image-perro" src="{{perro.imagen}}" alt="">
+      </div>
+
+      <div class="col-md-6">
+        <h2>{{perro.nombre}}</h2>
+        <p>{{perro.descripcion}}</p>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

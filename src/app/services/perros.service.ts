@@ -22,13 +22,13 @@ export class PerrosService {
   }
 
   getPerros() {
-    return this.http.get(`${this.apiURL}.json?auth=${this.token}`)
+    return this.http.get(`${this.apiURL}.json`)
       .map(response => response.json())
 
   }
 
   getOnePerro( key$: string ) {
-    return this.http.get(`${ this.apiURL }/${ key$ }.json?auth=${this.token}`)
+    return this.http.get(`${ this.apiURL }/${ key$ }.json`)
       .map(response => response.json());
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PerrosService} from "../../services/perros.service";
 
 @Component({
   selector: 'app-perros',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerrosComponent implements OnInit {
 
-  constructor() { }
+  perros: any[] = []
+
+  constructor(
+    private perrosSrv: PerrosService
+  ) {
+    this.perrosSrv.getPerros()
+      .subscribe( perros => {
+        for (const id$ in perros) {
+          const p = perros[id$];
+          p.id$ = id$;
+          this.perros.push(perros[id$]);
+        }
+      })
+
+    console.log(this.perros);
+  }
 
   ngOnInit() {
   }
