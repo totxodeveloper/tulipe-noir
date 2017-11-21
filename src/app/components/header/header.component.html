@@ -52,6 +52,11 @@
       <li *ngIf="!isLoggedIn" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/contacto">Contacto</a>
       </li>
+      <li *ngIf="!isLoggedIn" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/panel-admin">
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </a>
+      </li>
       <li *ngIf="isLoggedIn" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/portada" (click)="onLogout()">LogOut</a>
       </li>
