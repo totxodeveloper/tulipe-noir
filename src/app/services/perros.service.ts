@@ -35,7 +35,7 @@ export class PerrosService {
   addPerro(perro: PerroModel) {
 
     const body = JSON.stringify( perro );
-    return this.http.post(`${this.apiURL}.json?auth=${this.token}`, body)
+    return this.http.post(`${this.apiURL}.json`, body)
       .map( response => {
         return response.json();
       })
@@ -43,14 +43,14 @@ export class PerrosService {
 
   updatePerro(perro: PerroModel, key$: string) {
     const body = JSON.stringify( perro );
-    return this.http.put(`${ this.apiURL }/${ key$ }.json?auth=${this.token}`, body)
+    return this.http.put(`${ this.apiURL }/${ key$ }.json`, body)
       .map(response => {
         return response.json();
       })
   }
 
   deletePerro( key$: string ) {
-    return this.http.delete(`${ this.apiURL }/${ key$ }.json?auth=${this.token}`)
+    return this.http.delete(`${ this.apiURL }/${ key$ }.json`)
       .map(response => response.json());
   }
 }
