@@ -15,6 +15,7 @@ import { LoginComponent } from "./components/auth/login/login.component";
 import { ListadoPerrosComponent } from "./components/panel/listado-perros/listado-perros.component";
 import { FormPerroComponent } from "./components/panel/form-perro/form-perro.component";
 import { UploadImagenesComponent } from "./components/panel/upload-imagenes/upload-imagenes.component";
+import { CachorrosComponent } from "app/components/cachorros/cachorros.component";
 
 
 // Services
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'portada', component: PortadaComponent },
   { path: 'servicios', component: ServiciosComponent },
+  { path: 'cachorros', component: CachorrosComponent },
   { path: 'perros', component: PerrosComponent },
   { path: 'historia', component: HistoriaComponent },
   { path: 'raza', component: RazaComponent },
@@ -33,11 +35,11 @@ const appRoutes: Routes = [
   { path: 'panel-admin', component: LoginComponent },
   { path: 'panel', component: ListadoPerrosComponent, canActivate: [RouteGuard] },
   { path: 'perro/:id', component: FormPerroComponent, canActivate: [RouteGuard] },
-  { path: '**', pathMatch: 'full', redirectTo: 'portada' }
+  { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule]
 })
 

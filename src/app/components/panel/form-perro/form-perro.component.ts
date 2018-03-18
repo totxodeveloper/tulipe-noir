@@ -18,7 +18,8 @@ export class FormPerroComponent implements OnInit {
     nombre: '',
     especie: '',
     descripcion: '',
-    imagen: ''
+    imagen: '',
+    esCachorro: false
   };
 
   constructor(

@@ -34,7 +34,7 @@
           <th></th>
           <th>Nombre</th>
           <th>Especie</th>
-          <th>Descripcion</th>
+          <th>Es cachorro</th>
           <th class="text-right">Opciones</th>
           </thead>
           <tbody>
@@ -42,7 +42,7 @@
             <td><img src="{{perros[key].imagen}}" style="max-height: 150px; max-width: 150px;"></td>
             <td>{{perros[key].nombre}}</td>
             <td>{{perros[key].especie}}</td>
-            <td>{{perros[key].descripcion}}</td>
+            <td>{{ perros[key].esCachorro ? 'SI' : 'NO'}}</td>
             <td class="text-right w120">
               <button type="button" [routerLink]="['/perro', key]" class="btn btn-outline-primary">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

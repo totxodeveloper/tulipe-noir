@@ -17,11 +17,17 @@ export class PerrosComponent implements OnInit {
     this.perrosSrv.getPerros()
       .subscribe( perros => {
         this.loading = false;
+
         for (const id$ in perros) {
           const p = perros[id$];
           p.id$ = id$;
           this.perros.push(perros[id$]);
         }
+
+        this.perros = this.perros.filter( perro => {
+          return !perro.esCachorro;
+        })
+
       })
 
   }

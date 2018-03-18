@@ -37,6 +37,7 @@ import { UploadImagesService } from "./services/upload-images.service";
 
 // Pipe
 import { KeysPipe } from "./pipes/keys.pipe";
+import { CachorrosComponent } from './components/cachorros/cachorros.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { KeysPipe } from "./pipes/keys.pipe";
     SignUpComponent,
     FormPerroComponent,
     UploadImagenesComponent,
-    KeysPipe
+    KeysPipe,
+    CachorrosComponent
   ],
   imports: [
     BrowserModule,
